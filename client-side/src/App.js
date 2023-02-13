@@ -14,7 +14,7 @@ function App() {
 
   const makeAPICall = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/get-todo");
+      const response = await axios.get("http://localhost:8000/get-todo");
       setAllTodo(response.data);
     } catch (e) {
       console.log(e);
@@ -24,14 +24,14 @@ function App() {
   const handleAddTodo = () => {
     if (isUpdating === "") {
       try {
-        axios.post("http://localhost:5000/save-todo", { todo });
+        axios.post("http://localhost:8000/save-todo", { todo });
         setTodo(" ");
       } catch (e) {
         console.log(e);
       }
     } else {
       try {
-        axios.post("http://localhost:5000/update-todo", {
+        axios.post("http://localhost:8000/update-todo", {
           _id: isUpdating,
           todo,
         });
@@ -42,19 +42,18 @@ function App() {
     }
   };
 
-  const handleDeleteTodo = (id) => {
-    try {
-      axios.post("http://localhost:5000/delete-todo", { id });
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   const handleUpdateTodo = (id, todo) => {
     setIsUpdating(id);
     setTodo(todo);
   };
 
+  const handleDeleteTodo = (_id) => {
+    try {
+      axios.post("http://localhost:8000/delete-todo", { _id });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     makeAPICall();
   });
