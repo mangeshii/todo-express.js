@@ -1,0 +1,21 @@
+input:focus::placeholder {
+  color: #808080 !important;
+  font-weight: 300;
+}
+.btn-container{
+  opacity: 0;
+}
+.input-field:hover .btn-container{
+  opacity: 1;
+}
+.checkbox-checked:checked + .todo-item {
+  text-decoration: line-through;
+  text-decoration-color: #E91E63;
+  text-decoration-thickness: 2px;
+  opacity: 0.5;
+}
+
+.checkbox-checked:after{
+  content: '';
+  outline: 2px solid #c00;
+}
